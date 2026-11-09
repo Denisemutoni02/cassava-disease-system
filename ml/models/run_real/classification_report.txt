@@ -1,0 +1,11 @@
+Test-set classification report (319 images)
+============================================================
+              precision    recall  f1-score   support
+
+        CBSD     0.6032    0.6333    0.6179       120
+         CMD     0.7558    0.5417    0.6311       120
+     Healthy     0.5701    0.7722    0.6559        79
+
+    accuracy                         0.6332       319
+   macro avg     0.6430    0.6491    0.6350       319
+weighted avg     0.6524    0.6332    0.6323       319

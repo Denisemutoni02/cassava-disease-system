@@ -1,0 +1,12 @@
+[project]
+name = "cassavaguard-backend"
+version = "1.0.0"
+description = "FastAPI backend for cassava leaf disease detection and hotspot mapping (MuZARDI, Uganda)"
+requires-python = ">=3.10"
+readme = "../README.md"
+
+# Dependencies live in requirements.txt (kept simple for the 30-minute setup).
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

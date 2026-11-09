@@ -1,0 +1,21 @@
+# ML training environment — Python 3.10–3.12
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# For faster/lighter inference in the FastAPI backend, also install ONE of:
+#   pip install tflite-runtime      # TFLite on Linux/macOS (Py ≤ 3.11)
+#   pip install onnxruntime         # ONNX (works on Py 3.12+)
+
+# --- Training / conversion ---
+tensorflow>=2.16,<2.20        # Keras 3, MobileNetV2 (ImageNet weights), TFLite converter
+# NOTE: after installing tensorflow, pin protobuf & onnx to these tested combos:
+#   pip install protobuf==5.29.6 onnx==1.18.0
+tf2onnx>=1.16                 # ONNX export (used by quantise.py --onnx)
+onnx>=1.16                    # ONNX model format
+onnxruntime>=1.17             # ONNX inference (quantise.py --onnx eval + FastAPI backend)
+
+# --- Data / evaluation ---
+Pillow>=10.4
+numpy>=1.26
+scikit-learn>=1.5             # stratified split, classification report, F1
+matplotlib>=3.9               # training curves + confusion matrix plots

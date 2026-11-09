@@ -1,0 +1,7 @@
+{
+  "test_accuracy": 0.6332288401253918,
+  "test_precision_macro": 0.6430273382023002,
+  "test_recall_macro": 0.6490506329113924,
+  "test_f1_macro": 0.6349560395071535,
+  "n_test_images": 319
+}

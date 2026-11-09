@@ -1,0 +1,104 @@
+{
+  "model": {
+    "file": "E:/cassava-disease-system/ml/models/mobilenetv2_cassava.onnx",
+    "mode": "onnx",
+    "version_tag": "onnx-mobilenetv2_cassava",
+    "classes": [
+      "CBSD",
+      "CMD",
+      "Healthy"
+    ]
+  },
+  "dataset": {
+    "manifest": "E:/cassava-disease-system/ml/models/run_real/test_manifest.csv",
+    "n_images": 319,
+    "split": "held-out test split (15%, seed 42, never trained on)",
+    "per_class_support": {
+      "CBSD": 120,
+      "CMD": 120,
+      "Healthy": 79
+    }
+  },
+  "metrics": {
+    "accuracy": 0.6458,
+    "macro_precision": 0.654,
+    "macro_recall": 0.6674,
+    "macro_f1": 0.6464,
+    "weighted_precision": 0.6679,
+    "weighted_recall": 0.6458,
+    "weighted_f1": 0.6447,
+    "per_class": {
+      "CBSD": {
+        "precision": 0.6535,
+        "recall": 0.55,
+        "f1": 0.5973,
+        "support": 120
+      },
+      "CMD": {
+        "precision": 0.7629,
+        "recall": 0.6167,
+        "f1": 0.682,
+        "support": 120
+      },
+      "Healthy": {
+        "precision": 0.5455,
+        "recall": 0.8354,
+        "f1": 0.66,
+        "support": 79
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "CBSD",
+        "CMD",
+        "Healthy"
+      ],
+      "rows_true_cols_pred": [
+        [
+          66,
+          19,
+          35
+        ],
+        [
+          26,
+          74,
+          20
+        ],
+        [
+          9,
+          4,
+          66
+        ]
+      ]
+    },
+    "confidence": {
+      "mean": 0.6376,
+      "std": 0.1603,
+      "min": 0.3436,
+      "max": 0.9742,
+      "pct_at_or_above_0.60": 54.9
+    }
+  },
+  "inference_latency": {
+    "n": 319,
+    "mean_ms": 31.76,
+    "median_ms": 30.62,
+    "p95_ms": 45.83,
+    "min_ms": 19.21,
+    "max_ms": 90.97
+  },
+  "model_sizes": {
+    "keras_float": {
+      "file": "ml/models/run_real/best_model.keras",
+      "size_mb": 24.403
+    },
+    "tflite_dynamic": {
+      "file": "ml/models/mobilenetv2_cassava_dynamic.tflite",
+      "size_mb": 2.512
+    },
+    "onnx_deployed": {
+      "file": "ml/models/mobilenetv2_cassava.onnx",
+      "size_mb": 8.942
+    }
+  }
+}

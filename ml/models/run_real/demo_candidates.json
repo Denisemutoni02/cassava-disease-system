@@ -1,0 +1,173 @@
+{
+  "picks": {
+    "CBSD": [
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00495.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.9119742512702942,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00231.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.908962070941925,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00583.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.8864237070083618,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00010.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.8615403175354004,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00494.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.825742244720459,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00734.jpg",
+        "true": "CBSD",
+        "pred": "CBSD",
+        "conf": 0.8179906010627747,
+        "correct": true
+      }
+    ],
+    "CMD": [
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00094.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.964478075504303,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00586.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.9164684414863586,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00359.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.910096287727356,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00172.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.8589091300964355,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00476.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.8571769595146179,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00533.jpg",
+        "true": "CMD",
+        "pred": "CMD",
+        "conf": 0.8384705185890198,
+        "correct": true
+      }
+    ],
+    "Healthy": [
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00233.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9741979241371155,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00071.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9721674919128418,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00018.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9703910946846008,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00466.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9654337167739868,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00338.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9561746120452881,
+        "correct": true
+      },
+      {
+        "path": "E:\\cassava-disease-system\\data\\cassava\\Healthy\\healthy_00068.jpg",
+        "true": "Healthy",
+        "pred": "Healthy",
+        "conf": 0.9499694108963013,
+        "correct": true
+      }
+    ]
+  },
+  "low": [
+    {
+      "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00022.jpg",
+      "true": "CMD",
+      "pred": "Healthy",
+      "conf": 0.3436110317707062,
+      "correct": false
+    },
+    {
+      "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00132.jpg",
+      "true": "CMD",
+      "pred": "CMD",
+      "conf": 0.3447887897491455,
+      "correct": true
+    },
+    {
+      "path": "E:\\cassava-disease-system\\data\\cassava\\CBSD\\cbsd_00499.jpg",
+      "true": "CBSD",
+      "pred": "CMD",
+      "conf": 0.35344362258911133,
+      "correct": false
+    },
+    {
+      "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00045.jpg",
+      "true": "CMD",
+      "pred": "CBSD",
+      "conf": 0.3589637577533722,
+      "correct": false
+    },
+    {
+      "path": "E:\\cassava-disease-system\\data\\cassava\\CMD\\cmd_00744.jpg",
+      "true": "CMD",
+      "pred": "CBSD",
+      "conf": 0.3620873689651489,
+      "correct": false
+    }
+  ]
+}

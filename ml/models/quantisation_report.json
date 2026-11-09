@@ -1,0 +1,38 @@
+{
+  "float": {
+    "file": "models\\run_real\\best_model.keras",
+    "size_mb": 24.403,
+    "accuracy": 0.64576802507837,
+    "f1_macro": 0.6464375725476295,
+    "per_class_f1": {
+      "CBSD": 0.5973,
+      "CMD": 0.682,
+      "Healthy": 0.66
+    },
+    "latency_ms": 181.83
+  },
+  "tflite_dynamic": {
+    "file": "models\\mobilenetv2_cassava_dynamic.tflite",
+    "size_mb": 2.512,
+    "accuracy": 0.6426332288401254,
+    "f1_macro": 0.6417623344443767,
+    "per_class_f1": {
+      "CBSD": 0.5877,
+      "CMD": 0.6968,
+      "Healthy": 0.6408
+    },
+    "latency_ms": 167.83
+  },
+  "onnx": {
+    "file": "models\\mobilenetv2_cassava.onnx",
+    "size_mb": 8.942,
+    "accuracy": 0.64576802507837,
+    "f1_macro": 0.6464375725476295,
+    "per_class_f1": {
+      "CBSD": 0.5973,
+      "CMD": 0.682,
+      "Healthy": 0.66
+    },
+    "latency_ms": 9.72
+  }
+}

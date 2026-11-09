@@ -1,0 +1,82 @@
+{
+  "images": [
+    {
+      "file": "data/demo/demo_cbsd_1.jpg",
+      "predicted_label": "CBSD",
+      "confidence": 0.9119742512702942,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_cbsd_2.jpg",
+      "predicted_label": "CBSD",
+      "confidence": 0.908962070941925,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_cbsd_3.jpg",
+      "predicted_label": "CBSD",
+      "confidence": 0.8864237070083618,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_cmd_1.jpg",
+      "predicted_label": "CMD",
+      "confidence": 0.964478075504303,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_cmd_2.jpg",
+      "predicted_label": "CMD",
+      "confidence": 0.9164684414863586,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_cmd_3.jpg",
+      "predicted_label": "CMD",
+      "confidence": 0.910096287727356,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_healthy_1.jpg",
+      "predicted_label": "Healthy",
+      "confidence": 0.9741979241371155,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_healthy_2.jpg",
+      "predicted_label": "Healthy",
+      "confidence": 0.9721674919128418,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_healthy_3.jpg",
+      "predicted_label": "Healthy",
+      "confidence": 0.9703910946846008,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/demo/demo_low_confidence.jpg",
+      "predicted_label": "CMD",
+      "confidence": 0.3447887897491455,
+      "advice_is_soft": true
+    },
+    {
+      "file": "data/samples/cbsd_leaf.jpg",
+      "predicted_label": "CBSD",
+      "confidence": 0.8615403175354004,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/samples/cmd_leaf.jpg",
+      "predicted_label": "CMD",
+      "confidence": 0.8589091300964355,
+      "advice_is_soft": false
+    },
+    {
+      "file": "data/samples/healthy_leaf.jpg",
+      "predicted_label": "Healthy",
+      "confidence": 0.9654337167739868,
+      "advice_is_soft": false
+    }
+  ]
+}

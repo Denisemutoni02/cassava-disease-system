@@ -1,0 +1,26 @@
+{
+  "data": "../data/cassava",
+  "csv": null,
+  "output_dir": "models/run_real",
+  "epochs": 10,
+  "fine_tune_epochs": 5,
+  "batch_size": 32,
+  "lr": 0.001,
+  "fine_tune_lr": 1e-05,
+  "fine_tune_at": 100,
+  "patience": 4,
+  "val_split": 0.15,
+  "test_split": 0.15,
+  "seed": 42,
+  "no_augment": false,
+  "weights": null,
+  "class_names": [
+    "CBSD",
+    "CMD",
+    "Healthy"
+  ],
+  "layout": "flat",
+  "train_size": 1489,
+  "val_size": 319,
+  "test_size": 319
+}
