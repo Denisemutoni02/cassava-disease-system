@@ -1,0 +1,200 @@
+enable
+configure terminal
+hostname <HOSTNAME>
+no ip domain-lookup
+service password-encryption
+enable secret UCUnet2026
+username netadmin privilege 15 secret UCUadmin
+line console 0
+ password UCUconsole
+ login
+ exit
+line vty 0 4
+ login local
+ transport input ssh telnet
+ exit
+banner motd #
+
+ UCU MUKONO CAMPUS NETWORK                  
+ AUTHORIZED ACCESS ONLY                     
+ Student: B34946              
+ Reg No: S25B13/070        
+ Unauthorized access is prohibited          
+
+#
+end
+write memory
+
+
+enable
+configure terminal
+vlan 10
+ name MGMT
+vlan 20
+ name FACULTY
+vlan 30
+ name STUDENTS
+vlan 40
+ name LIBRARY
+vlan 50
+ name SERVERS
+vlan 60
+ name GUEST
+vlan 99
+ name NATIVE
+end
+
+
+
+
+
+SW1 ACW
+enable
+configure terminal
+interface range fa0/1 - 5
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+interface range fa0/6 - 10
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+end
+
+enable
+configure terminal
+interface range fa0/11 - 24
+ switchport mode access
+ switchport access vlan 99
+ shutdown
+interface range g0/1 - 2
+exit
+end
+
+
+SW2 ACW
+enable
+configure terminal
+interface range fa0/1 - 5
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+interface range fa0/6 - 10
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+end
+
+enable
+configure terminal
+interface range fa0/11 - 24
+ switchport mode access
+ switchport access vlan 99
+ shutdown
+end
+
+
+SW3 ACW
+enable
+configure terminal
+interface range fa0/1 - 5
+ switchport mode access
+ switchport access vlan 40
+ no shutdown
+interface range fa0/6 - 10
+ switchport mode access
+ switchport access vlan 60
+ no shutdown
+interface fa0/24
+ switchport mode access
+ switchport access vlan 60
+ no shutdown
+end
+
+enable
+configure terminal
+interface range fa0/11 - 23
+ switchport mode access
+ switchport access vlan 99
+ shutdown
+end
+
+
+CORE SW1 ACW
+enable
+configure terminal
+interface g1/0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,99
+interface g1/0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,99
+interface g1/0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,50,99
+interface g1/0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 20,30,99
+interface g1/0/4
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 40,60,99
+end
+
+CORE SW2 ACW
+enable
+configure terminal
+interface g1/0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,99
+interface g1/0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,99
+interface g1/0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,50,99
+interface g1/0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 40,60,99
+end
+
+
+SW1 TR
+enable
+configure terminal
+interface g0/1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,50,99
+interface g0/2
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,50,99
+end
+
+
+SW2 TR
+enable
+configure terminal
+interface g0/1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 20,30,99
+end
