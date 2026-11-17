@@ -8,6 +8,11 @@ import logging
 import os
 from contextlib import asynccontextmanager
 
+if os.getenv("VERCEL"):
+    # Function filesystems are read-only except for /tmp.
+    os.environ.setdefault("ENVIRONMENT", "production")
+    os.environ.setdefault("UPLOAD_DIR", "/tmp/cassavaguard-uploads")
+
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse

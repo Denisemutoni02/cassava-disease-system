@@ -1,2 +1,0 @@
--r backend/requirements.txt
-fastapi>=0.138.0,<1.0

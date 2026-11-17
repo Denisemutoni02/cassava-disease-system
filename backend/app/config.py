@@ -1,6 +1,7 @@
 """Application configuration loaded from environment variables (.env)."""
 
 from functools import lru_cache
+import os
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -37,7 +38,11 @@ class Settings(BaseSettings):
     # Default: the ONNX export produced by ml/quantise.py (loads with
     # onnxruntime, which works on Python 3.12). Override with MODEL_PATH,
     # e.g. ...\mobilenetv2_cassava_dynamic.tflite when tflite-runtime is installed.
-    model_path: str = str(PROJECT_ROOT / "ml" / "models" / "mobilenetv2_cassava.onnx")
+    model_path: str = str(
+        (BACKEND_ROOT / "models" / "mobilenetv2_cassava.onnx")
+        if os.getenv("VERCEL")
+        else (PROJECT_ROOT / "ml" / "models" / "mobilenetv2_cassava.onnx")
+    )
     confidence_threshold: float = 0.60          # below → label "Uncertain"
     force_mock_model: bool = False              # True → always use the deterministic mock
 
@@ -76,10 +81,11 @@ class Settings(BaseSettings):
 
     @property
     def model_file(self) -> Path:
-        # Relative paths resolve from the project root, so a packaged copy works
-        # on any machine: MODEL_PATH=ml/models/mobilenetv2_cassava.onnx
         p = Path(self.model_path)
-        return p if p.is_absolute() else (PROJECT_ROOT / p).resolve()
+        if p.is_absolute():
+            return p
+        root = BACKEND_ROOT if os.getenv("VERCEL") else PROJECT_ROOT
+        return (root / p).resolve()
 
 
 @lru_cache
