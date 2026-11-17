@@ -130,9 +130,11 @@ export default function Upload() {
   }
 
   return (
-    <div className="page">
-      <section className="card">
-        <h2>New diagnosis</h2>
+    <div className="page upload-page">
+      <section className="card upload-card">
+        <p className="eyebrow">FIELD CHECK</p>
+        <h2>How is your cassava looking?</h2>
+        <p className="muted">Take a clear photo of one leaf to check for common cassava diseases.</p>
         <p className="muted">Fit one leaf inside the frame · daylight works best</p>
 
         {!online && (
@@ -223,6 +225,16 @@ export default function Upload() {
           )}
         </form>
       </section>
+
+      <aside className="card photo-tips">
+        <h3>For a clearer check</h3>
+        <ul>
+          <li>Choose a leaf with visible symptoms.</li>
+          <li>Use daylight and keep the leaf in focus.</li>
+          <li>Keep other leaves and fingers out of the frame.</li>
+        </ul>
+        <p className="muted small">If the result is unclear, ask an extension officer to confirm it.</p>
+      </aside>
 
       {busy && (
         <section className="card analysis-card" aria-live="polite">

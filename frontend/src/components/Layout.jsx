@@ -3,9 +3,9 @@ import { useAuth } from '../context/AuthContext';
 import OfflineBanner from './OfflineBanner';
 
 const NAV = [
-  { to: '/diagnose', label: 'Diagnose', icon: '📷', end: true },
-  { to: '/map', label: 'Map', icon: '🗺️' },
-  { to: '/history', label: 'History', icon: '🕘' },
+  { to: '/diagnose', label: 'Diagnose', icon: '+', end: true },
+  { to: '/map', label: 'Map', icon: 'M' },
+  { to: '/history', label: 'History', icon: 'H' },
 ];
 
 export default function Layout() {
@@ -16,12 +16,10 @@ export default function Layout() {
     <div className="app-shell">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-leaf" aria-hidden>
-            🌿
-          </span>
+          <span className="brand-leaf" aria-hidden>CG</span>
           <div>
             <h1>CassavaGuard</h1>
-            <p className="brand-sub">MuZARDI · Uganda</p>
+            <p className="brand-sub">MuZARDI | Uganda</p>
           </div>
         </div>
         {user && (
@@ -44,10 +42,6 @@ export default function Layout() {
 
       <OfflineBanner />
 
-      <main className="content">
-        <Outlet />
-      </main>
-
       <nav className="bottom-nav" aria-label="Primary">
         {NAV.map((item) => (
           <NavLink
@@ -61,6 +55,10 @@ export default function Layout() {
           </NavLink>
         ))}
       </nav>
+
+      <main className="content">
+        <Outlet />
+      </main>
     </div>
   );
 }
