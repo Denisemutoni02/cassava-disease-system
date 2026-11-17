@@ -5,6 +5,7 @@ Run with:
 """
 
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, status
@@ -106,19 +107,25 @@ def create_app() -> FastAPI:
     if settings.serve_frontend:
         dist = (PROJECT_ROOT / "frontend" / "dist").resolve()
         if dist.is_dir():
-            from fastapi.responses import FileResponse
+            if os.getenv("VERCEL"):
+                # FastAPI's frontend helper handles SPA routes and lets
+                # Vercel promote the built assets to its CDN.
+                app.frontend("/", directory=str(dist))
+                logger.info("Serving frontend from Vercel CDN build at %s", dist)
+            else:
+                from fastapi.responses import FileResponse
 
-            @app.get("/{full_path:path}", include_in_schema=False)
-            async def spa(full_path: str) -> FileResponse | JSONResponse:
-                if full_path.startswith(("api/", "docs", "redoc", "openapi")):
-                    return JSONResponse(status_code=status.HTTP_404_NOT_FOUND,
-                                        content={"detail": "Not Found"})
-                target = (dist / full_path).resolve()
-                if full_path and target.is_relative_to(dist) and target.is_file():
-                    return FileResponse(target)          # hashed JS/CSS/assets
-                return FileResponse(dist / "index.html")  # SPA route (deep links)
+                @app.get("/{full_path:path}", include_in_schema=False)
+                async def spa(full_path: str) -> FileResponse | JSONResponse:
+                    if full_path.startswith(("api/", "docs", "redoc", "openapi")):
+                        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND,
+                                            content={"detail": "Not Found"})
+                    target = (dist / full_path).resolve()
+                    if full_path and target.is_relative_to(dist) and target.is_file():
+                        return FileResponse(target)          # hashed JS/CSS/assets
+                    return FileResponse(dist / "index.html")  # SPA route (deep links)
 
-            logger.info("Serving built frontend from %s", dist)
+                logger.info("Serving built frontend from %s", dist)
         else:
             logger.warning(
                 "SERVE_FRONTEND=true but %s is missing — run `npm run build` in frontend/",

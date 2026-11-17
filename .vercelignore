@@ -1,0 +1,10 @@
+venv/
+frontend/node_modules/
+backend/tests/
+backend/scripts/
+data/
+docs/
+ml/models/run/
+ml/models/run_real/
+ml/models/*.tflite
+ml/models/*.log

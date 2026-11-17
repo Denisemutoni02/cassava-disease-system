@@ -12,7 +12,8 @@
  *   (wrong URL, stopped backend and CORS errors all count as 'server')
  */
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
+const defaultApiUrl = import.meta.env.PROD ? '' : 'http://localhost:8000';
+const API_URL = (import.meta.env.VITE_API_URL ?? defaultApiUrl).replace(/\/+$/, '');
 const API_V1 = `${API_URL}/api/v1`;
 
 export { API_URL };

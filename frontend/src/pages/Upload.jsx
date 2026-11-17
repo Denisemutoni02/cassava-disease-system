@@ -5,6 +5,40 @@ import { useNetwork } from '../context/NetworkContext';
 import api, { NetworkError } from '../api/client';
 import { addHistory, setLastResult } from '../lib/history';
 
+const VERCEL_SAFE_IMAGE_BYTES = 4 * 1024 * 1024;
+
+async function prepareImageForUpload(file) {
+  if (file.size <= VERCEL_SAFE_IMAGE_BYTES) return file;
+  if (typeof createImageBitmap !== 'function') {
+    throw new Error('This photo is too large to upload. Choose one under 4 MB.');
+  }
+
+  const bitmap = await createImageBitmap(file);
+  try {
+    const canvas = document.createElement('canvas');
+    const maxEdge = 1800;
+    let scale = Math.min(1, maxEdge / Math.max(bitmap.width, bitmap.height));
+    let blob = null;
+
+    for (let attempt = 0; attempt < 8; attempt += 1) {
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.86 - attempt * 0.04));
+      if (blob && blob.size <= VERCEL_SAFE_IMAGE_BYTES) break;
+      scale *= 0.85;
+    }
+
+    if (!blob || blob.size > VERCEL_SAFE_IMAGE_BYTES) {
+      throw new Error('Could not reduce this photo enough to upload. Choose a smaller image.');
+    }
+    const name = file.name.replace(/\.[^.]+$/, '') || 'cassava-leaf';
+    return new File([blob], `${name}.jpg`, { type: 'image/jpeg', lastModified: Date.now() });
+  } finally {
+    bitmap.close();
+  }
+}
+
 /**
  * Home / Upload screen: pick or capture a leaf photo, optionally attach GPS,
  * then call POST {VITE_API_URL}/diagnose and hand the result to /result.
@@ -72,7 +106,7 @@ export default function Upload() {
     setStage({ uploaded: false, checked: false, inference: false, advice: false });
 
     const fd = new FormData();
-    fd.append('file', file);
+    fd.append('file', await prepareImageForUpload(file));
     if (gps) {
       fd.append('latitude', String(gps.lat));
       fd.append('longitude', String(gps.lon));
@@ -181,6 +215,7 @@ export default function Upload() {
                 <span aria-hidden>📷</span>
                 <p>Tap to take a photo or choose from gallery</p>
                 <p className="muted small">JPEG / PNG / WebP · max 8 MB</p>
+                <p className="muted small">Large photos are resized before upload.</p>
               </div>
             )}
             <input

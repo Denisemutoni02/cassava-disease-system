@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "main.py": {
+      "maxDuration": 60,
+      "includeFiles": "{backend/app/**,frontend/dist/**,ml/models/mobilenetv2_cassava.onnx}",
+      "excludeFiles": "{backend/tests/**,backend/scripts/**,data/**,docs/**,venv/**,frontend/node_modules/**,ml/models/run/**,ml/models/run_real/**,ml/models/*.tflite,ml/models/*.log}"
+    }
+  }
+}
