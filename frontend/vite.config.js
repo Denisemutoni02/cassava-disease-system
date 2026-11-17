@@ -15,14 +15,14 @@ export default defineConfig({
         short_name: 'CassavaGuard',
         description:
           'Detect cassava mosaic (CMD) and brown streak (CBSD) disease from a leaf photo. Requires internet.',
-        theme_color: '#1b5e20',
+        theme_color: '#205438',
         background_color: '#f5f5f0',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
         icons: [
-          { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+          { src: '/icons/cassava-guard-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/icons/cassava-guard-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
         ],
       },
       workbox: {
